@@ -11,7 +11,7 @@ services:
       - ./api:/usr/src/app/api
       - /usr/src/app/api/node_modules
   vue-ui:
-    build:і
+    build:
       context: .
       dockerfile: Dockerfile
     ports:
@@ -20,14 +20,14 @@ services:
     volumes:
       - ./:/usr/src/app/my-app
       - /usr/src/app/my-app/node_modules
-  mongodb:
-    image: mongo
-    container_name: mongodb
-    environment:
-      - PUID=1000
-      - PGID=1000
-    volumes:
-      - /home/barry/mongodb/database:/data/db
-    ports:
-      - 27017:27017
-    restart: unless-stopped
+  # mongodb:
+  #   image: mongo
+  #   container_name: mongodb
+  #   environment:
+  #     - PUID=1000
+  #     - PGID=1000
+  #   volumes:
+  #     - /home/barry/mongodb/database:/data/db
+  #   ports:
+  #     - 27017:27017
+  #   restart: unless-stopped
