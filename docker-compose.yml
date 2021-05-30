@@ -1,0 +1,33 @@
+version: '3'
+services:
+  nodejs-server:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    container_name: node-api
+    volumes:
+      - ./api:/usr/src/app/api
+      - /usr/src/app/api/node_modules
+  vue-ui:
+    build:і
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4200:4200'
+    container_name: vue-ui
+    volumes:
+      - ./:/usr/src/app/my-app
+      - /usr/src/app/my-app/node_modules
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - /home/barry/mongodb/database:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped

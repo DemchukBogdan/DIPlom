@@ -1,0 +1,43 @@
+{
+  "name": "smart-home",
+  "version": "0.1.6",
+  "description": "Demo app for zircle-ui tutorial",
+  "author": "Juan Martín Muda <juan.martin.muda@gmail.com>",
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "keywords": [
+    "zircle",
+    "smart-home",
+    "tutorial",
+    "vue",
+    "javascript"
+  ],
+  "dependencies": {
+    "leaflet": "^1.4.0",
+    "smoothie": "^1.35.0",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.6",
+    "zircle": "^1.2.5"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.6.0",
+    "@vue/cli-plugin-eslint": "^3.6.0",
+    "@vue/cli-service": "^3.6.0",
+    "@vue/eslint-config-standard": "^3.0.5",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zircleui/tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zircleui/tutorial/issues"
+  },
+  "homepage": "https://github.com/zircleui/tutorial#readme",
+  "license": "MIT"
+}

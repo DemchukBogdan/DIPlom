@@ -1,0 +1,27 @@
+{
+  "name": "duplom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js --unhandled-rejections=strict",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12"
+  },
+  "engines": {
+    "node": ">=9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
