@@ -1,9 +1,9 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
-const { Device } = require("../models");
+const { Device } = require('../models');
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const devices = await Device.find({});
     res.status(200).send(devices);
@@ -14,19 +14,19 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {
+router.post('/create', async (req, res) => {
   try {
-    const { Name, Category, Qty, State } = req.body;
+    const { name, category, qty, state } = req.body;
 
     const device = await Device.create({
-      Name,
-      Category,
-      Qty,
-      State,
+      name: name || 'device',
+      category,
+      qty,
+      state: state || false,
     });
     console.log(device.id);
     res.status(200).json({
-      message: "Ok",
+      message: 'Ok',
     });
   } catch (error) {
     res.status(500).json({
@@ -35,7 +35,7 @@ router.post("/create", async (req, res) => {
   }
 });
 
-router.get("/delete/:id", async (req, res) => {
+router.get('/delete/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const device = await Device.remove({
@@ -50,7 +50,7 @@ router.get("/delete/:id", async (req, res) => {
   }
 });
 
-router.get("/edit/:id", async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
   try {
     const id = req.params.id;
     const device = await Device.findById(id);
@@ -65,11 +65,11 @@ router.get("/edit/:id", async (req, res) => {
   }
 });
 
-router.post("/edit", async (req, res) => {
+router.post('/edit', async (req, res) => {
   try {
-    console.log('body',JSON.stringify(req.body));
+    console.log('body', JSON.stringify(req.body));
     const id = req.body.id;
-    const { Name, Categiry, Qty, State } = req.body;
+    const { State } = req.body;
 
     const device = await Device.findByIdAndUpdate(
       {
@@ -80,7 +80,7 @@ router.post("/edit", async (req, res) => {
       }
     );
     res.status(200).json({
-      message: "Ok",
+      message: 'Ok',
     });
     console.log(device);
   } catch (error) {

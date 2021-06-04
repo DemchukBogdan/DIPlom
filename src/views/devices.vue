@@ -1,29 +1,39 @@
 <template>
   <z-view>
     <section slot="extension">
-      <z-list
-        :items="devices"
-        :per-page="5">
+      <z-list :items="devices" :per-page="5">
+        <z-spot
+          slot-scope="props"
+          :index="props.index"
+          :distance="60"
+          :to-view="{
+            name: 'device',
+            params: { category: props.category, qty: props.qty },
+          }"
+          :label="props.category"
+        >
+          <span style="color: white;">{{ props.qty }}</span>
           <z-spot
-            slot-scope="props"
-            :index="props.index"
-            :distance="60"
-            :to-view="{ name: 'device', params: {category: props.category, qty: props.qty}}"
-            :label="props.category">
-            <span style="color: white;">{{props.qty}}</span>
-            <z-spot slot="extension"
-              :style="props.category === 'care' ? 'background-color: red; border: none;': 'background-color: green; border: none;'"
-              :angle='-45'
-              size='xxs'>
-            </z-spot>
+            slot="extension"
+            :style="
+              props.category === 'care'
+                ? 'background-color: red; border: none;'
+                : 'background-color: green; border: none;'
+            "
+            :angle="-45"
+            size="xxs"
+          >
           </z-spot>
+        </z-spot>
       </z-list>
     </section>
-</z-view>
+  </z-view>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
-  data () {
+  data() {
     return {
       devices: [
         { category: 'cameras & sensors', qty: 4 },
@@ -39,9 +49,24 @@ export default {
         { category: 'voice assistant', qty: 1 },
         { category: 'water', qty: 1 },
         { category: 'windows & blinds', qty: 3 },
-        { category: 'entertainment', qty: 3 }
-      ]
-    }
-  }
-}
+        { category: 'entertainment', qty: 3 },
+      ],
+    };
+  },
+
+  methods: {
+    getDevices: async function() {
+      const { data } = await axios.get('http://172.22.0.2:3000/devices');
+      console.log(data);
+    },
+    createDevices: function() {
+      this.devices.map((d) =>
+        axios.post('http://172.22.0.2:3000/devices/create', d)
+      );
+    },
+  },
+  created() {
+    this.getDevices();
+  },
+};
 </script>
