@@ -16,6 +16,7 @@
     "javascript"
   ],
   "dependencies": {
+    "axios": "^0.21.1",
     "leaflet": "^1.4.0",
     "smoothie": "^1.35.0",
     "vue": "^2.6.10",
