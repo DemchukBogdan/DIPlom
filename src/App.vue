@@ -32,7 +32,7 @@ export default {
       debug: true
     })
     this.$zircle.setView('home')
-
+    console.log('work',process.env.VUE_APP_API);
   }
 }
 </script>

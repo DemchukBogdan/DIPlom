@@ -18,7 +18,7 @@ export default {
   methods: {
     getState: function() {
       var app = this;
-      fetch(`http://172.22.0.2:3000/devices/edit/60ad139e2e00712fc4d60be7`)
+      fetch(`${process.env.VUE_APP_API}/devices/edit/60ad139e2e00712fc4d60be7`)
         .then((response) => response.json())
         .then((data) => (app.state = data.state))
         .catch(function(error) {
@@ -31,7 +31,7 @@ export default {
         State: !this.state,
       };
       axios
-        .post('http://172.22.0.2:3000/devices/edit', body)
+        .post(`${process.env.VUE_APP_API}/devices/edit`, body)
         .then((response) => console.log(response))
         .catch((error) => {
           console.error('There was an error!', error);

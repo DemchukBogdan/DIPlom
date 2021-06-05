@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const routes = require('./routes');
 const config = require('./config');
-const cors = require('cors')
+const cors = require('cors');
 // database
 mongoose.Promise = global.Promise;
 mongoose.set('debug', config.IS_PRODUCTION);
@@ -17,9 +18,7 @@ mongoose.connection
 mongoose.connect(config.MONGO_URL, { useMongoClient: true });
 
 const app = express();
-app.use(
-  cors()
-);
+app.use(cors());
 app.use(
   bodyParser.urlencoded({
     extended: false,

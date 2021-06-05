@@ -56,17 +56,20 @@ export default {
 
   methods: {
     getDevices: async function() {
-      const { data } = await axios.get('http://172.22.0.2:3000/devices');
-      console.log(data);
+      console.log('work',process.env.VUE_APP_API);
+      const { data } = await axios.get(`${process.env.VUE_APP_API}/devices`);
+      console.log({data});
     },
     createDevices: function() {
+      console.log('work');
       this.devices.map((d) =>
-        axios.post('http://172.22.0.2:3000/devices/create', d)
+        axios.post(`${process.env.VUE_APP_API}/devices/create`, d)
       );
     },
   },
   created() {
     this.getDevices();
+    this.createDevices();
   },
 };
 </script>
